@@ -23,19 +23,18 @@ function handleRangeChange(event) {
 function showPodcastFrom(frequency) {
   var podcast = null;
 
-  for (var i = 0; i < realPodcasts.length; i++) {
+  /*for (var i = 0; i < realPodcasts.length; i++) {
     var currentPodcast = realPodcasts[i];
     if (currentPodcast.id === frequency) {
       podcast = currentPodcast;
       break;
     }
-  }
-  renderPodcast(podcast);
+  }*/
 
-  /*opção em JS moderno:
-  podcast = realPodcasts.find(function(podcast){
+  podcast = realPodcasts.find(function (podcast) {
     return podcast.id === frequency;
-  })*/
+  });
+  renderPodcast(podcast);
 }
 
 function renderPodcast(podcast) {
@@ -44,9 +43,9 @@ function renderPodcast(podcast) {
     return;
   }
 
-  globalDivPodcast.innerHTML = ' ';
+  /*globalDivPodcast.innerHTML = ' ';
 
-  /*var img = document.createElement('img');
+  var img = document.createElement('img');
   img.src = '../img/' + podcast.img;
 
   var h2 = document.createElement('h2');
@@ -62,7 +61,7 @@ function renderPodcast(podcast) {
   var { img, title, description } = podcast;
 
   globalDivPodcast.innerHTML = `
-    <img src='/img/${img}'/>
+    <img src='../img/${img}'/>
     <h2>${title}</h2>
     <p>${description}</p>
   `;
