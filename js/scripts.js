@@ -1,0 +1,72 @@
+window.addEventListener('load', start);
+
+var globalInputRanger = null;
+var globalInputFrequency = null;
+var globalDivPodcast = null;
+
+function start() {
+  globalInputRanger = document.querySelector('#inputRanger');
+  globalInputFrequency = document.querySelector('#inputFrequency');
+  globalDivPodcast = document.querySelector('#divPodcast');
+
+  globalInputRanger.addEventListener('input', handleRangeChange);
+  showPodcastFrom(globalInputFrequency.value);
+}
+
+function handleRangeChange(event) {
+  var currentFrequency = event.target.value;
+  globalInputFrequency.value = currentFrequency;
+
+  showPodcastFrom(currentFrequency);
+}
+
+function showPodcastFrom(frequency) {
+  var podcast = null;
+
+  for (var i = 0; i < realPodcasts.length; i++) {
+    var currentPodcast = realPodcasts[i];
+    if (currentPodcast.id === frequency) {
+      podcast = currentPodcast;
+      break;
+    }
+  }
+  renderPodcast(podcast);
+
+  /*opção em JS moderno:
+  podcast = realPodcasts.find(function(podcast){
+    return podcast.id === frequency;
+  })*/
+}
+
+function renderPodcast(podcast) {
+  if (!podcast) {
+    globalDivPodcast.textContent = 'Nenhum podcast encontrado';
+    return;
+  }
+
+  globalDivPodcast.innerHTML = ' ';
+
+  var img = document.createElement('img');
+  img.src = '../img/' + podcast.img;
+
+  var h2 = document.createElement('h2');
+  h2.textContent = podcast.title;
+
+  var p = document.createElement('p');
+  p.textContent = podcast.description;
+
+  globalDivPodcast.appendChild(img);
+  globalDivPodcast.appendChild(h2);
+  globalDivPodcast.appendChild(p);
+
+  /*opção em JS moderno:
+  var {img, title, description} = podcast;
+
+  globalDivPodcast.innerHTML =
+  `
+    <img src='../img/${img}'/>
+    <h2>${title}</h2>
+    <p>${description}</p>
+  `;
+  */
+}
