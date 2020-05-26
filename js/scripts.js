@@ -46,7 +46,7 @@ function renderPodcast(podcast) {
 
   globalDivPodcast.innerHTML = ' ';
 
-  var img = document.createElement('img');
+  /*var img = document.createElement('img');
   img.src = '../img/' + podcast.img;
 
   var h2 = document.createElement('h2');
@@ -57,16 +57,13 @@ function renderPodcast(podcast) {
 
   globalDivPodcast.appendChild(img);
   globalDivPodcast.appendChild(h2);
-  globalDivPodcast.appendChild(p);
+  globalDivPodcast.appendChild(p);*/
 
-  /*opção em JS moderno:
-  var {img, title, description} = podcast;
+  var { img, title, description } = podcast;
 
-  globalDivPodcast.innerHTML =
-  `
+  globalDivPodcast.innerHTML = `
     <img src='../img/${img}'/>
     <h2>${title}</h2>
     <p>${description}</p>
   `;
-  */
 }
