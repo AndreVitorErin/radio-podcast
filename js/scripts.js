@@ -61,7 +61,7 @@ function renderPodcast(podcast) {
   var { img, title, description } = podcast;
 
   globalDivPodcast.innerHTML = `
-    <img src='../img/${img}'/>
+  <img src='./img/${img}'/>
     <h2>${title}</h2>
     <p>${description}</p>
   `;
